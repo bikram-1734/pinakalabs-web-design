@@ -177,30 +177,76 @@ export default function Navbar() {
           </div>
         </div>
 
-        <div style={{ overflow: "hidden", maxHeight: mobileOpen ? "460px" : "0", opacity: mobileOpen ? 1 : 0, transition: "max-height 0.3s ease, opacity 0.25s", marginTop: mobileOpen ? "10px" : "0" }}>
-          <div style={{ ...pillStyle, borderRadius: "16px", padding: "10px", boxShadow: "0 8px 30px rgba(79,70,229,0.1)", display: "flex", flexDirection: "column", gap: "2px" }}>
+        <div style={{
+          overflow: "hidden",
+          maxHeight: mobileOpen ? "520px" : "0",
+          opacity: mobileOpen ? 1 : 0,
+          transform: mobileOpen ? "translateY(0) scale(1)" : "translateY(-6px) scale(0.98)",
+          transition: "max-height 0.35s cubic-bezier(0.4,0,0.2,1), opacity 0.28s ease, transform 0.28s cubic-bezier(0.4,0,0.2,1)",
+          marginTop: mobileOpen ? "10px" : "0",
+        }}>
+          {/* ── Liquid glass card ── */}
+          <div style={{
+            position: "relative",
+            overflow: "hidden",
+            borderRadius: "22px",
+            padding: "8px",
+            display: "flex",
+            flexDirection: "column",
+            gap: "2px",
+            background: dark
+              ? "linear-gradient(145deg, rgba(18,12,42,0.82) 0%, rgba(30,18,58,0.75) 55%, rgba(12,22,50,0.78) 100%)"
+              : "linear-gradient(145deg, rgba(255,255,255,0.82) 0%, rgba(243,239,255,0.72) 45%, rgba(232,243,255,0.68) 100%)",
+            backdropFilter: "blur(28px) saturate(200%)",
+            WebkitBackdropFilter: "blur(28px) saturate(200%)",
+            border: `1px solid ${dark ? "rgba(255,255,255,0.09)" : "rgba(255,255,255,0.92)"}`,
+            boxShadow: dark
+              ? "0 12px 40px rgba(0,0,0,0.40), 0 2px 8px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.07), 0 0 0 0.5px rgba(79,70,229,0.18)"
+              : "0 12px 40px rgba(79,70,229,0.10), 0 3px 14px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,1), 0 0 0 0.5px rgba(79,70,229,0.07)",
+          }}>
+
+            {/* Lavender blob — top right */}
+            <div style={{
+              position: "absolute", top: "-40px", right: "-24px",
+              width: "140px", height: "140px", borderRadius: "50%",
+              background: dark ? "rgba(99,70,229,0.18)" : "rgba(200,185,255,0.42)",
+              filter: "blur(28px)", pointerEvents: "none",
+            }} />
+            {/* Cyan blob — bottom left */}
+            <div style={{
+              position: "absolute", bottom: "-28px", left: "-16px",
+              width: "110px", height: "110px", borderRadius: "50%",
+              background: dark ? "rgba(6,182,212,0.14)" : "rgba(186,232,255,0.45)",
+              filter: "blur(22px)", pointerEvents: "none",
+            }} />
+
             <MobileLink label="Home" href="#" active dark={dark} />
+
             <div>
               <button onClick={() => setMobileIndustriesOpen(!mobileIndustriesOpen)}
-                className="w-full text-left hover:bg-[rgba(79,70,229,0.05)] rounded-lg transition-colors"
-                style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 14px", fontFamily: "'Inter',Arial,sans-serif", fontWeight: 500, fontSize: "14px", color: dark ? "#CBD5E1" : "#0f172a", background: "none", border: "none", cursor: "pointer" }}>
+                className="mobile-nav-btn w-full text-left rounded-xl transition-all"
+                style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 14px", fontFamily: "'Inter',Arial,sans-serif", fontWeight: 500, fontSize: "14px", color: dark ? "#CBD5E1" : "#0f172a", background: "none", border: "none", cursor: "pointer", width: "100%", borderRadius: "10px" }}>
                 Industries
                 <Image src="/images/chevron-down.svg" alt="" width={14} height={14}
-                  style={{ opacity: 0.45, transform: mobileIndustriesOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s" }} />
+                  style={{ opacity: 0.45, transform: mobileIndustriesOpen ? "rotate(180deg)" : "none", transition: "transform 0.22s" }} />
               </button>
-              <div style={{ maxHeight: mobileIndustriesOpen ? "150px" : "0", overflow: "hidden", transition: "max-height 0.2s ease" }}>
+              <div style={{ maxHeight: mobileIndustriesOpen ? "150px" : "0", overflow: "hidden", transition: "max-height 0.22s ease" }}>
                 {industries.map((item) => (
                   <a key={item.label} href={item.href}
-                    className="hover:text-[#4f46e5] hover:bg-[rgba(79,70,229,0.04)]"
-                    style={{ display: "block", padding: "8px 14px 8px 28px", fontFamily: "Arial,sans-serif", fontSize: "13px", color: dark ? "rgba(203,213,225,0.7)" : "rgba(15,23,42,0.6)", textDecoration: "none", borderRadius: "6px", transition: "color 0.15s, background 0.15s" }}>
+                    className="mobile-sub-link"
+                    style={{ display: "block", padding: "8px 14px 8px 28px", fontFamily: "'Inter',Arial,sans-serif", fontSize: "13px", color: dark ? "rgba(203,213,225,0.7)" : "rgba(15,23,42,0.6)", textDecoration: "none", borderRadius: "8px", transition: "color 0.15s, background 0.15s" }}>
                     {item.label}
                   </a>
                 ))}
               </div>
             </div>
+
             {(["About", "Service", "Contact"] as const).map((l) => <MobileLink key={l} label={l} href="#" dark={dark} />)}
-            <a href="#" className="hover:bg-[#4338ca]"
-              style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "44px", background: "#4f46e5", borderRadius: "10px", fontFamily: "'Inter',Arial,sans-serif", fontWeight: 500, fontSize: "14px", color: "#fff", textDecoration: "none", marginTop: "6px", transition: "background 0.2s" }}>
+
+            {/* CTA — gradient glass button */}
+            <a href="#"
+              className="mobile-cta"
+              style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "44px", background: "linear-gradient(135deg, #4f46e5 0%, #6d58f0 50%, #3b82f6 100%)", backgroundSize: "200% 200%", borderRadius: "12px", fontFamily: "'Inter',Arial,sans-serif", fontWeight: 500, fontSize: "14px", color: "#fff", textDecoration: "none", marginTop: "4px", boxShadow: "0 2px 14px rgba(79,70,229,0.28), inset 0 1px 0 rgba(255,255,255,0.18)", transition: "opacity 0.2s, transform 0.15s" }}>
               Book a Demo
             </a>
           </div>
@@ -224,6 +270,11 @@ export default function Navbar() {
         .cta-btn { transition: background 0.2s, box-shadow 0.2s, transform 0.15s; }
         .cta-btn:hover { background: #4338ca !important; box-shadow: 0 4px 20px rgba(79,70,229,0.28) !important; transform: translateY(-1px); }
         .cta-btn:active { transform: scale(0.97); }
+        .mobile-nav-link:hover { background: rgba(79,70,229,0.06) !important; color: #4f46e5 !important; border-color: rgba(79,70,229,0.10) !important; }
+        .mobile-nav-btn:hover { background: rgba(79,70,229,0.06) !important; }
+        .mobile-sub-link:hover { background: rgba(79,70,229,0.05); color: #4f46e5 !important; }
+        .mobile-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+        .mobile-cta:active { transform: scale(0.97); }
       `}</style>
     </nav>
   );
@@ -232,8 +283,19 @@ export default function Navbar() {
 function MobileLink({ label, href, active, dark }: { label: string; href: string; active?: boolean; dark?: boolean }) {
   return (
     <a href={href}
-      className={active ? "" : "hover:bg-[rgba(79,70,229,0.05)] hover:text-[#4f46e5]"}
-      style={{ display: "block", padding: "10px 14px", fontFamily: "'Inter',Arial,sans-serif", fontWeight: 500, fontSize: "14px", color: active ? "#4f46e5" : (dark ? "#CBD5E1" : "#0f172a"), background: active ? "rgba(79,70,229,0.06)" : "transparent", borderRadius: "8px", textDecoration: "none", transition: "background 0.15s, color 0.15s" }}>
+      className={active ? "" : "mobile-nav-link"}
+      style={{
+        display: "block", padding: "10px 14px",
+        fontFamily: "'Inter',Arial,sans-serif", fontWeight: 500, fontSize: "14px",
+        color: active ? "#4f46e5" : (dark ? "#CBD5E1" : "#0f172a"),
+        background: active
+          ? (dark ? "rgba(79,70,229,0.14)" : "rgba(79,70,229,0.07)")
+          : "transparent",
+        borderRadius: "10px",
+        border: active ? `1px solid ${dark ? "rgba(79,70,229,0.25)" : "rgba(79,70,229,0.14)"}` : "1px solid transparent",
+        textDecoration: "none",
+        transition: "background 0.18s, color 0.18s, border-color 0.18s",
+      }}>
       {label}
     </a>
   );
