@@ -33,7 +33,7 @@ export default function GridBackground() {
     WebkitMaskImage: "url('/images/grid-mask.svg')",
     maskRepeat: "no-repeat",
     WebkitMaskRepeat: "no-repeat",
-    maskComposite: "intersect",
+    maskMode: "alpha",
     WebkitMaskComposite: "destination-in",
   };
 
@@ -56,7 +56,7 @@ export default function GridBackground() {
         {/* ── Grid lines (5% opacity) ── */}
         <div
           className="absolute"
-          style={{ width: "2120.938px", height: "1831.719px", left: "-352px", top: "-345px", opacity: dark ? 0.08 : 0.05, ...maskStyle, maskSize: "1518.399px 1193.027px", WebkitMaskSize: "1518.399px 1193.027px", maskPosition: "88.872px 295.244px", WebkitMaskPosition: "88.872px 295.244px" }}
+          style={{ width: "2120.938px", height: "1831.719px", left: "-352px", top: "-345px", opacity: dark ? 0.18 : 0.28, ...maskStyle, maskSize: "1518.399px 1193.027px", WebkitMaskSize: "1518.399px 1193.027px", maskPosition: "88.872px 295.244px", WebkitMaskPosition: "88.872px 295.244px" }}
         >
           <div className="absolute flex items-center justify-center" style={{ inset: 0 }}>
             <div style={{ transform: "rotate(-90deg)", flexShrink: 0 }}>
