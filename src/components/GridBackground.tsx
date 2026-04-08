@@ -45,18 +45,18 @@ export default function GridBackground() {
       className="absolute inset-0 overflow-hidden pointer-events-none transition-colors duration-500"
       style={{ backgroundColor: dark ? "#0D0B1A" : "#F0EDFB" }}
     >
-      {/* Container — 1440×689, top 90, centred, clips children */}
+      {/* Container — 1440×689, top 84, centred, clips children */}
       <div
         className="absolute overflow-hidden"
-        style={{ width: "1440px", height: "689px", top: "90px", left: "50%", transform: "translateX(-50%)" }}
+        style={{ width: "1440px", height: "689px", top: "84px", left: "50%", transform: "translateX(-50%)" }}
       >
         {/* Gradient background */}
         <div className="absolute inset-0 transition-all duration-500" style={{ backgroundImage: gradBg }} />
 
-        {/* ── Grid lines (5% opacity) ── */}
+        {/* ── Grid lines (7% opacity) ── */}
         <div
           className="absolute"
-          style={{ width: "2120.938px", height: "1831.719px", left: "-352px", top: "-345px", opacity: dark ? 0.08 : 0.05, ...maskStyle, maskSize: "1518.399px 1193.027px", WebkitMaskSize: "1518.399px 1193.027px", maskPosition: "88.872px 295.244px", WebkitMaskPosition: "88.872px 295.244px" }}
+          style={{ width: "2120.938px", height: "1831.719px", left: "-352px", top: "-353px", opacity: dark ? 0.11 : 0.07, ...maskStyle, maskSize: "1518.399px 1193.027px", WebkitMaskSize: "1518.399px 1193.027px", maskPosition: "88.872px 295.244px", WebkitMaskPosition: "88.872px 295.244px" }}
         >
           <div className="absolute flex items-center justify-center" style={{ inset: 0 }}>
             <div style={{ transform: "rotate(-90deg)", flexShrink: 0 }}>
@@ -70,10 +70,10 @@ export default function GridBackground() {
           <img alt="" src="/images/verti-lines.svg" style={{ position: "absolute", display: "block", maxWidth: "none", width: "1831.719px", height: "1394.878px", left: "55.73px", top: "218.42px" }} />
         </div>
 
-        {/* ── Grid blocks (30% opacity) ── */}
+        {/* ── Grid blocks (40% opacity) ── */}
         <div
           className="absolute"
-          style={{ width: "1541.952px", height: "1169.474px", left: "-295.44px", top: "-105.08px", opacity: dark ? 0.15 : 0.3, ...maskStyle, maskSize: "1518.399px 1193.027px", WebkitMaskSize: "1518.399px 1193.027px", maskPosition: "32.314px 55.325px", WebkitMaskPosition: "32.314px 55.325px" }}
+          style={{ width: "1541.952px", height: "1169.474px", left: "-295.44px", top: "-113.08px", opacity: dark ? 0.20 : 0.40, ...maskStyle, maskSize: "1518.399px 1193.027px", WebkitMaskSize: "1518.399px 1193.027px", maskPosition: "32.314px 55.325px", WebkitMaskPosition: "32.314px 55.325px" }}
         >
           <Block l={964.06}  t={976.39}  w={95.858} h={95.858} o={0.5 * bo} />
           <Block l={482.03}  t={976.39}  w={95.858} h={95.858} o={0.8 * bo} />
