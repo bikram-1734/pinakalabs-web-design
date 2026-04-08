@@ -73,7 +73,7 @@ export default function GridBackground() {
         {/* ── Grid blocks (40% opacity) ── */}
         <div
           className="absolute"
-          style={{ width: "1541.952px", height: "1169.474px", left: "-295.44px", top: "-113.08px", opacity: dark ? 0.20 : 0.40, ...maskStyle, maskSize: "1518.399px 1193.027px", WebkitMaskSize: "1518.399px 1193.027px", maskPosition: "32.314px 55.325px", WebkitMaskPosition: "32.314px 55.325px" }}
+          style={{ width: "1541.952px", height: "1169.474px", left: "-295.44px", top: "-113.08px", opacity: dark ? 0.20 : 0.60, ...maskStyle, maskSize: "1518.399px 1193.027px", WebkitMaskSize: "1518.399px 1193.027px", maskPosition: "32.314px 55.325px", WebkitMaskPosition: "32.314px 55.325px" }}
         >
           <Block l={964.06}  t={976.39}  w={95.858} h={95.858} o={0.5 * bo} />
           <Block l={482.03}  t={976.39}  w={95.858} h={95.858} o={0.8 * bo} />
