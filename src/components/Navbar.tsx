@@ -270,9 +270,74 @@ export default function Navbar() {
         .cta-btn { transition: background 0.2s, box-shadow 0.2s, transform 0.15s; }
         .cta-btn:hover { background: #4338ca !important; box-shadow: 0 4px 20px rgba(79,70,229,0.28) !important; transform: translateY(-1px); }
         .cta-btn:active { transform: scale(0.97); }
-        .mobile-nav-link:hover { background: rgba(79,70,229,0.06) !important; color: #4f46e5 !important; border-color: rgba(79,70,229,0.10) !important; }
-        .mobile-nav-btn:hover { background: rgba(79,70,229,0.06) !important; }
-        .mobile-sub-link:hover { background: rgba(79,70,229,0.05); color: #4f46e5 !important; }
+        /* ── iOS liquid glass hover ── */
+        .mobile-nav-link, .mobile-nav-btn, .mobile-sub-link {
+          position: relative;
+          transition: background 0.22s ease, color 0.18s ease,
+                      border-color 0.22s ease, box-shadow 0.22s ease,
+                      transform 0.18s cubic-bezier(0.34,1.56,0.64,1),
+                      backdrop-filter 0.22s ease !important;
+        }
+
+        /* Light mode hover */
+        .mobile-nav-link:hover {
+          background: rgba(255,255,255,0.72) !important;
+          border-color: rgba(255,255,255,0.92) !important;
+          color: #4f46e5 !important;
+          box-shadow:
+            inset 0 1.5px 0 rgba(255,255,255,1),
+            inset 0 -1px 0 rgba(0,0,0,0.04),
+            0 2px 10px rgba(79,70,229,0.08),
+            0 1px 3px rgba(0,0,0,0.05) !important;
+          backdrop-filter: blur(16px) saturate(180%);
+          -webkit-backdrop-filter: blur(16px) saturate(180%);
+          transform: scale(1.012);
+        }
+        .mobile-nav-btn:hover {
+          background: rgba(255,255,255,0.72) !important;
+          border-radius: 10px;
+          box-shadow:
+            inset 0 1.5px 0 rgba(255,255,255,1),
+            inset 0 -1px 0 rgba(0,0,0,0.04),
+            0 2px 10px rgba(79,70,229,0.08) !important;
+          backdrop-filter: blur(16px) saturate(180%);
+          -webkit-backdrop-filter: blur(16px) saturate(180%);
+          transform: scale(1.012);
+        }
+        .mobile-sub-link:hover {
+          background: rgba(255,255,255,0.65) !important;
+          color: #4f46e5 !important;
+          box-shadow:
+            inset 0 1px 0 rgba(255,255,255,0.95),
+            0 1px 6px rgba(79,70,229,0.06) !important;
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          transform: scale(1.01);
+        }
+
+        /* Dark mode overrides */
+        .dark .mobile-nav-link:hover {
+          background: rgba(255,255,255,0.10) !important;
+          border-color: rgba(255,255,255,0.18) !important;
+          color: #a5b4fc !important;
+          box-shadow:
+            inset 0 1.5px 0 rgba(255,255,255,0.16),
+            inset 0 -1px 0 rgba(0,0,0,0.18),
+            0 2px 12px rgba(0,0,0,0.22) !important;
+        }
+        .dark .mobile-nav-btn:hover {
+          background: rgba(255,255,255,0.10) !important;
+          box-shadow:
+            inset 0 1.5px 0 rgba(255,255,255,0.16),
+            inset 0 -1px 0 rgba(0,0,0,0.18),
+            0 2px 10px rgba(0,0,0,0.20) !important;
+        }
+        .dark .mobile-sub-link:hover {
+          background: rgba(255,255,255,0.08) !important;
+          color: #a5b4fc !important;
+          box-shadow: inset 0 1px 0 rgba(255,255,255,0.10) !important;
+        }
+
         .mobile-cta:hover { opacity: 0.88; transform: translateY(-1px); }
         .mobile-cta:active { transform: scale(0.97); }
       `}</style>
@@ -294,7 +359,7 @@ function MobileLink({ label, href, active, dark }: { label: string; href: string
         borderRadius: "10px",
         border: active ? `1px solid ${dark ? "rgba(79,70,229,0.25)" : "rgba(79,70,229,0.14)"}` : "1px solid transparent",
         textDecoration: "none",
-        transition: "background 0.18s, color 0.18s, border-color 0.18s",
+        transition: "background 0.22s ease, color 0.18s ease, border-color 0.22s ease, box-shadow 0.22s ease, transform 0.18s cubic-bezier(0.34,1.56,0.64,1)",
       }}>
       {label}
     </a>
